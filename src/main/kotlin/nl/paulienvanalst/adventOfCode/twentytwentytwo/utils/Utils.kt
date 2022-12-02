@@ -1,4 +1,4 @@
-package nl.paulienvanalst.adventOfCode.twentytwentyone.utils
+package nl.paulienvanalst.adventOfCode.twentytwentytwo.utils
 
 import java.io.File
 
