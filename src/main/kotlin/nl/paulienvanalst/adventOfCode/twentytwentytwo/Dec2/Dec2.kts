@@ -56,24 +56,6 @@ println("${scores2.sum()}")
 println("Found")
 
 fun List<String>.calculateScore2() : Int  {
-    // Score outcome:
-// losing combinations
-// A > Z : 0
-// C > Y : 0
-// B > X : 0
-// winning combinations
-// C < X : 6
-// B < Z : 6
-// A < Y : 6
-// draw combinations:
-// A == X : 3
-// B == Y : 3
-// C == Z : 3
-
-//        "Rock "    1
-//        "Paper "   2
-//        "Scissor"  3
-
     val outcomeScore = when(this[1]) {
         "X" -> 0
         "Y" -> 3
