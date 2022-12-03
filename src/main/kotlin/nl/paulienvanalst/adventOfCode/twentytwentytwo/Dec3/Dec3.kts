@@ -8,21 +8,31 @@ val input = File("./input.txt").inputStream().bufferedReader().readLines()
 
 println("Solution to part 1:")
 
-println("a: ${'a'.convertToPriority()}")
-println("A: ${'A'.convertToPriority()}")
-
-val sumPriorities = input
+val sumPriorities1 = input
     .map { it.substring(0, it.length / 2) to it.substring(it.length / 2) }
     .map { it.commonChar() }.sumOf { it.convertToPriority() }
 
-println("Found: ${sumPriorities}")
+println("Found: ${sumPriorities1}")
 
 
 println("Solution to part 2:")
 
-println("Found")
+val sumPriorities2 = input
+    .chunked(3)
+    .map { it.commonChar() }
+    .sumOf { it.convertToPriority() }
+
+println("Found: ${sumPriorities2}")
 
 fun Pair<String, String>.commonChar(): Char = this.first.first { it in this.second }
+
+fun List<String>.commonChar(): Char = this.findCommonChar()
+
+
+fun List<String>.findCommonChar(): Char {
+    return this.map { it.toSet() }.reduce(Set<Char>::intersect).first()
+}
+
 fun Char.convertToPriority(): Int {
     return if (this.isLowerCase()) {
         this.code - 96
